@@ -1,0 +1,16 @@
+﻿<Window x:Class="Acme.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Acme"
+        mc:Ignorable="d"
+        Title="Acme" Height="500" Width="400">
+    <Window.Resources>
+    </Window.Resources>
+
+    <Grid VerticalAlignment="Top">
+        <Button Width="200" Height="32" Margin="92,214.5,92,214.5" Content="Open PowerPoint" Click="OpenPowerPointButtonClickAsync" Grid.ColumnSpan="3" />
+        <Button Width="200" Height="32" Margin="92,262.5,92,166.5" Content="Get Logs" Click="ArchiveLogs" Grid.ColumnSpan="3"/>
+    </Grid>
+</Window>
