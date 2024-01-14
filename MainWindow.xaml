@@ -5,12 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Acme"
         mc:Ignorable="d"
-        Title="Acme" Height="500" Width="400">
+        Title="Acme" 
+        Height="500" 
+        Width="400"
+        Background="#F3F3F3"
+        >
     <Window.Resources>
-    </Window.Resources>
+        <Style TargetType="Button" x:Key="GeneralButton">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Name="border"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="True">
+                                <Setter Property="BorderThickness" TargetName="border" Value="0"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderThickness" TargetName="border" Value="2"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="LightGray"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="BorderThickness" TargetName="border" Value="2"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="Gray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>            
+        </Style>
 
-    <Grid VerticalAlignment="Top">
-        <Button Width="200" Height="32" Margin="92,214.5,92,214.5" Content="Open PowerPoint" Click="OpenPowerPointButtonClickAsync" Grid.ColumnSpan="3" />
-        <Button Width="200" Height="32" Margin="92,262.5,92,166.5" Content="Get Logs" Click="ArchiveLogs" Grid.ColumnSpan="3"/>
+
+        <Style TargetType="Button" x:Key="MainButton" BasedOn="{StaticResource GeneralButton}">
+            <Setter Property="Background" Value="#0A5FB3"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
+    
+
+    <Grid VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="48"/>
+        </Grid.RowDefinitions>
+        <Button Style="{StaticResource MainButton}" Grid.Column="0" Grid.Row="1" Width="200" Height="32" Content="Open PowerPoint" Click="OpenPowerPointButtonClickAsync"/>
+        <Button Style="{StaticResource GeneralButton}" Grid.Column="0" Grid.Row="2" Width="200" Height="32" Margin="0 16 0 0" Content="Get Logs" Click="ArchiveLogs"/>
     </Grid>
 </Window>
