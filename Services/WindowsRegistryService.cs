@@ -33,5 +33,23 @@ namespace Acme.Services
             }
             return Enumerable.Empty<string>();
         }
+
+
+
+        public RegistryKey? GetClassesRootSubKey(string key)
+        {
+            _logger.LogInformation($"Getting classes root sub key \"{key}\"");
+            try
+            {
+                var registryKey = Registry.ClassesRoot.OpenSubKey(key);
+
+                return registryKey;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Failed to get classes root sub key  \"{key}\"");
+            }
+            return null;
+        }
     }
 }

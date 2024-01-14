@@ -12,6 +12,7 @@ namespace Acme.Services
         string AcmeFolderName { get; }
         string LogArchiveFolderName { get; }
         string PresentationFileName { get; }
+        string PresentationFileExtension { get; }
         string SlidoApiUrl { get; }
         string PresentationEndpoint { get; }
         string PowerPointAddonsFileName { get; }

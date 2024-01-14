@@ -34,12 +34,35 @@ namespace Acme
 
         private async void OpenPowerPointButtonClickAsync(object sender, RoutedEventArgs e)
         {
-            (sender as Button).IsEnabled = false;
+            if (sender.GetType() == typeof(Button))
+            {
+                (sender as Button).IsEnabled = false;
+            }
 
             var presentationPath = await _slidoService.DownloadPresentationAsync();
-            _powerPointService.OpenPresentation(presentationPath);
 
-            (sender as Button).IsEnabled = true;
+            var canOpenPresentation = _powerPointService.HasProgramAssociatedWithPowerPointExtension();
+
+            if (!canOpenPresentation)
+            {
+
+                MessageBox.Show("There is no application that is able to open the presentation.", "Error", MessageBoxButton.OK);
+            } 
+            else
+            {
+                var presentationOpened = _powerPointService.OpenPresentation(presentationPath);
+
+                if (!presentationOpened)
+                {
+
+                    MessageBox.Show("Something went wrong while opening the presentation.", "Error", MessageBoxButton.OK);
+                }
+            }
+
+            if (sender.GetType() == typeof(Button))
+            {
+                (sender as Button).IsEnabled = true;
+            }
         }
 
         private void ArchiveLogs(object sender, RoutedEventArgs e)

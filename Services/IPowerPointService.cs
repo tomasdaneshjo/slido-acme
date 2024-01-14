@@ -9,5 +9,6 @@ namespace Acme.Services
     public interface IPowerPointService
     {
         bool OpenPresentation(string pathToPresentation);
+        bool HasProgramAssociatedWithPowerPointExtension();
     }
 }

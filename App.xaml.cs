@@ -60,6 +60,7 @@ namespace Acme
             {
                 Application.Current.Shutdown();
             }
+
             var mainWindow = _serviceProvider.GetService<MainWindow>();
             mainWindow.Show();
         }

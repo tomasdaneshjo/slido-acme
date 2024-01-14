@@ -10,5 +10,6 @@ namespace Acme.Services
     public interface IWindowsRegistryService
     {
         IEnumerable<string> GetCurrentUserSubKeys(string key);
+        RegistryKey? GetClassesRootSubKey(string key);
     }
 }

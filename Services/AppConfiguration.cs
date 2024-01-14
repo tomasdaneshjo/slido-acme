@@ -18,7 +18,8 @@ namespace Acme.Services
 
         public string LogArchiveFolderName => "log_archive";
 
-        public string PresentationFileName => "how_to_use_slido.pptx";
+        public string PresentationFileName => "how_to_use_slido" + PresentationFileExtension;
+        public string PresentationFileExtension => ".pptx";
 
         public string PowerPointAddonsFileName => "powerpoint_addons.txt";
 
